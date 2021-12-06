@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "943523113137",
+    "project_id": "minorchat-bot",
+    "storage_bucket": "minorchat-bot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943523113137:android:a202b3d32f46396f831a90",
+        "android_client_info": {
+          "package_name": "com.example.minorchatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943523113137-uoomrj1sf7lip5t663cscpinvcdpv8rc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF4ZgEBsBVUsnvSwmzcItle20t3BbIQRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943523113137-uoomrj1sf7lip5t663cscpinvcdpv8rc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Minor Chatbot</string>
+    <string name="type_here">Type Here...</string>
+    <string name="transfer">Transfer</string>
+    <string name="balance">Balance</string>
+    <string name="hello">Hello</string>
+</resources>
