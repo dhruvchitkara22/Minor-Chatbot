@@ -1,17 +1,23 @@
 package com.example.minorchatbot;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +38,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        localdata[0] = "hii. i am bot How may i help you";
+       localdata[0] = "hii. i am bot How may i help you";
 
         Button btn1 = findViewById(R.id.btnOne);
         Button btn2 = findViewById(R.id.btnTwo);
         Button btn3 = findViewById(R.id.btnThree);
+
+        TextInputEditText text_area = findViewById(R.id.texthere);
+        ImageButton but = findViewById(R.id.mic);
+
+        ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult() , result -> {
+            if(result.getResultCode() == RESULT_OK && result.getData()!=null){
+                Intent data = result.getData();
+                text_area.setText(data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+            }
+        });
+
+        but.setOnClickListener(view -> {
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Start speaking");
+
+            launcher.launch(intent);
+        });
 
         btn1.setOnClickListener(v -> {
             ChatbotResponse obj = new ChatbotResponse("Hello");
